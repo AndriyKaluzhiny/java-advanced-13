@@ -32,7 +32,7 @@ public class BucketsController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
-            List<Bucket> buckets = new ArrayList<>();
+            List<Bucket> buckets;
             buckets = bucketService.readAll();
             Map<Integer, Product> idToProduct = productService.readAllMap();
             List<BucketDto> dtos = map(buckets, idToProduct);
@@ -53,7 +53,7 @@ public class BucketsController extends HttpServlet {
             bucketDto.bucketId = bucket.getId();
             bucketDto.purchaseDate = bucket.getPurchaseDate();
 
-            Product product = idToProduct.get(bucket.getProductId());
+            Product product = idToProduct.get(bucket.getProduct().getId());
             bucketDto.name = product.getName();
             bucketDto.description = product.getDescription();
             bucketDto.price = product.getCost();

@@ -8,6 +8,12 @@
       .row {  
         justify-content: space-evenly;
       }
+
+	  .btn-primary {
+		color: #fff!important;
+   	 	background-color: #505050!important;
+    	border-color: #000000!important;
+	  }
 </style>
 
 <body>

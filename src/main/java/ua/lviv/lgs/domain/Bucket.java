@@ -1,33 +1,35 @@
 package ua.lviv.lgs.domain;
 
-import java.sql.Timestamp;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.Objects;
 
+@Entity
+@Table(name="Bucket")
 public class Bucket {
+
+    @Id
     private Integer id;
-    private Integer userId;
-    private Integer productId;
+    @ManyToOne
+    @JoinColumn(name = "userId", referencedColumnName = "id")
+    protected User user;
+    @ManyToOne
+    @JoinColumn(name="productId", referencedColumnName = "id")
+    protected Product product;
+    @Column(name="purchaseDate")
     private Date purchaseDate;
 
     public Bucket(Integer id,Integer userId, Integer productId, Date purchaseDate) {
-        this.id = id;
-        this.productId = productId;
-        this.userId = userId;
-        this.purchaseDate = purchaseDate;
     }
 
     public Bucket(Integer productId,Integer userId, Date purchaseDate) {
-        this.productId = productId;
-        this.userId = userId;
-        this.purchaseDate = purchaseDate;
+    }
+
+    public Bucket() {
     }
 
     public Integer getId() {
         return id;
-    }
-
-    public Integer getProductId() {
-        return productId;
     }
 
     public Date getPurchaseDate() {
@@ -38,19 +40,46 @@ public class Bucket {
         this.id = id;
     }
 
-    public void setProductId(Integer productId) {
-        this.productId = productId;
-    }
-
-    public void setPurchaseDate(Timestamp purchaseDate) {
+    public void setPurchaseDate(Date purchaseDate) {
         this.purchaseDate = purchaseDate;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "Bucket{" +
+                "id='" + id + '\'' +
+                ", user=" + user +
+                ", product=" + product +
+                ", purchaseDate=" + purchaseDate +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Bucket bucket = (Bucket) o;
+        return Objects.equals(id, bucket.id) && Objects.equals(user, bucket.user) && Objects.equals(product, bucket.product) && Objects.equals(purchaseDate, bucket.purchaseDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, user, product, purchaseDate);
     }
 }

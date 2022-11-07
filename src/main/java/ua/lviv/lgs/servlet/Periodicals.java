@@ -23,14 +23,14 @@ public class Periodicals extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        try {
         String productName = req.getParameter("pName");
         String productDescription = req.getParameter("pDescription");
         String productPrice = req.getParameter("pPrice");
 
         Product product = new Product(productName, productDescription, getValidatedPrice(productPrice));
 
-        try {
-            productService.create(product);
+        productService.create(product);
         } catch (SQLException e) {
             System.out.println(e);
         }

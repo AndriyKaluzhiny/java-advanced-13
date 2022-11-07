@@ -11,6 +11,8 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class BucketServiceImpl implements BucketService {
+    Integer id = 0;
+
     private static Logger LOGGER = Logger.getLogger(BucketServiceImpl.class);
     private static BucketService bucketServiceImpl;
     private BucketDao bucketDao;
@@ -18,7 +20,7 @@ public class BucketServiceImpl implements BucketService {
     private BucketServiceImpl() {
         try {
             bucketDao = new BucketDaoImpl();
-        } catch (InvocationTargetException | NoSuchMethodException | InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
+        } catch (Exception e) {
             LOGGER.error(e);
         }
     }
@@ -54,6 +56,11 @@ public class BucketServiceImpl implements BucketService {
     @Override
     public List<Bucket> readAll() throws SQLException {
         return bucketDao.readAll();
+    }
+
+    @Override
+    public Integer setId() {
+        return id++;
     }
 
 }

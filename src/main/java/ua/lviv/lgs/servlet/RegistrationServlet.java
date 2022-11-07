@@ -2,11 +2,13 @@ package ua.lviv.lgs.servlet;
 
 import org.apache.log4j.Logger;
 import ua.lviv.lgs.domain.User;
+import ua.lviv.lgs.domain.UserRole;
 import ua.lviv.lgs.service.UserService;
 import ua.lviv.lgs.service.impl.UserServiceImpl;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -36,7 +38,8 @@ public class RegistrationServlet extends HttpServlet {
 
 		if (!username.isEmpty() && !lastName.isEmpty() && !email.isEmpty() && !password.isEmpty() && !email.isEmpty()) {
 			try {
-				userService.create(new User(username, lastName, email, password));
+				String role = UserRole.USER.toString();
+				userService.create(new User(username, lastName, email, password, role));
 			} catch (SQLException e) {
 				LOGGER.error(e);
 			}

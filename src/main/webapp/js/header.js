@@ -6,4 +6,8 @@ $.get("user-role", function(data) {
     if (userRole == 'ADMINISTRATOR') {
         $('a.bucket').hide();
     }
+
+    if (userRole == 'USER') {
+        $('a.createProduct').hide();
+    }
 });

@@ -24,6 +24,12 @@ body {
     display: none
 }
 
+.logout {
+    background-color: whitesmoke;
+    border: 0;
+    color: black!important;
+}
+
 @media(min-width:992px) {
     .leftmenutrigger {
         display: block;

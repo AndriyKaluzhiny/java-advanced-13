@@ -21,7 +21,7 @@ $.get("buckets", function(data) {
             "<td>" + value.description + "</td>" +
             "<td>" + value.price + "</td>" +
             "<td>" + value.purchaseDate + "</td>" +
-            "<td><button class='deleteBtn' onclick='deleteOrderFromBucket(" + value.bucketId + ")'>delete</button></td>" +
+            "<td><button class='deleteBtn' onclick='deleteOrderFromBucket(" + value.bucketId + ")'>delete</button></td > " +
             "</tr>"
     });
 

@@ -59,15 +59,19 @@ $('button.createProduct').click(function() {
         pDescription: $('input.productDescription').val(),
         pPrice: $('input.productPrice').val()
     };
-
-    $.post("product",
-        product,
-        function(data) {
-            if (data == "Success") {
-                alert('Success');
+    if (product.pName !== null && product.pDescription !== null && product.pPrice !== null) {
+        $.post("product",
+            product,
+            function(data) {
+                if (data == "Success") {
+                    alert('Success');
+                }
             }
-        }
-    );
+        );
+    } else {
+
+        alert("Please fill the fields!");
+    }
 });
 
 $('button.nav-link.logout').click(function() {

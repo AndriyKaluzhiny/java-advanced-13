@@ -20,7 +20,7 @@
       </div> 
     </div>
 
-    <jsp:include page="footer.jsp" />
+  <jsp:include page="footer.jsp" />
 
 	<script src="js/effects.js"></script>
   <script src="js/ajaxCalls.js"></script>

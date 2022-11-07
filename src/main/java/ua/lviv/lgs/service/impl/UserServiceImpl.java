@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
     private UserServiceImpl() {
         try {
             userDao = new UserDaoImpl();
-        } catch (SQLException | ClassNotFoundException | IllegalAccessException | InstantiationException | NoSuchMethodException | InvocationTargetException e) {
+        } catch (Exception e) {
             LOGGER.error(e);
         }
     }

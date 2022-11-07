@@ -1,10 +1,24 @@
 package ua.lviv.lgs.domain;
 
+
+import javax.persistence.*;
+import java.util.Objects;
+
+@Entity
+@Table(name="product")
 public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column
     private String name;
+    @Column
     private String description;
+    @Column
     private Double cost;
+
+    public Product() {
+    }
 
     public Product(Integer id, String name, String description, Double cost) {
         this.id = id;
@@ -59,6 +73,19 @@ public class Product {
                 ", name='" + name + '\'' +
                 ", cost=" + cost +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return Objects.equals(id, product.id) && Objects.equals(name, product.name) && Objects.equals(description, product.description) && Objects.equals(cost, product.cost);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, description, cost);
     }
 }
 

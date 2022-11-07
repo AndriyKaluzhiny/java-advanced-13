@@ -1,13 +1,33 @@
 package ua.lviv.lgs.domain;
 
+import javax.persistence.*;
+import java.util.Objects;
+
+@Entity
+@Table(name="user")
 public class User {
-	private Integer id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	protected Integer id;
+
+	@Column(name="name")
 	private String name;
+
+	@Column(name="last_name")
 	private String lastName;
+
+	@Column(name="email")
 	private String email;
+
+	@Column(name="password")
 	private String password;
+
+	@Column(name="role")
 	private String role;
-	
+
+	public User() {
+	}
+
 	 public User(String name, String lastName, String email, String password, String role) {
 		this.name = name;
 		this.lastName = lastName;
@@ -16,7 +36,7 @@ public class User {
 		this.role = role;
 	}
 	public User(Integer id, String name, String lastName, String email, String password, String role) {
-		 this.id = id;
+		this.id = id;
 		this.name = name;
 		this.lastName = lastName;
 		this.email = email;
@@ -91,5 +111,16 @@ public class User {
 				'}';
 	}
 
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		User user = (User) o;
+		return Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(lastName, user.lastName) && Objects.equals(email, user.email) && Objects.equals(password, user.password) && Objects.equals(role, user.role);
+	}
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, name, lastName, email, password, role);
+	}
 }

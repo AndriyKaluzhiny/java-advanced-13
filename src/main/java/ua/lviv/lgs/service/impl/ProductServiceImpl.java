@@ -20,7 +20,7 @@ public class ProductServiceImpl implements ProductService {
     public ProductServiceImpl() {
         try {
             productDao = new ProductDaoImpl();
-        } catch (SQLException | ClassNotFoundException | IllegalAccessException | InstantiationException | InvocationTargetException | NoSuchMethodException e) {
+        } catch (Exception e) {
             System.out.println(e);
         }
     }

@@ -16,7 +16,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="${pageContext.request.contextPath}/createProduct.jsp">add Periodical</a>
+            <a class="nav-link createProduct" href="${pageContext.request.contextPath}/createProduct.jsp">add Periodical</a>
           </li>
           <li class="nav-item">
             <a class="nav-link bucket" href="${pageContext.request.contextPath}/bucket.jsp">Bucket</a>
